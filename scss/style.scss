@@ -1,0 +1,265 @@
+$background-main: #add8e6;
+$border-radius: 5px;
+$font-size-main: 15px;
+$font-size-text: 13px;
+$font-size-lower: 10px;
+
+$tablet: 768px;
+
+::-webkit-scrollbar{
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+-webkit-border-radius: 5px;
+border-radius: 5px;
+background-color: $background-main;
+  }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: $font-size-main;
+}
+input,
+button {
+    outline: none;
+}
+.autorization {
+    width: 100vw;
+    height: 100vh;
+    background-color: $background-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__form,
+    & input {
+        border: 1px solid #fff;
+        border-radius: $border-radius;
+    } 
+    &__form {
+        background-color: #cee1eb;
+        padding: 10px;
+        &_h1 {
+            color: #5454c5;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        &_text {
+            color: #5454c5;
+            font-weight: 600;
+        }
+        &_error {
+            color: #ff0000;
+        }
+    }
+    & input {
+        background: #f0fbfe;
+    }
+    & input,
+    & button {
+        display: block;
+        width: 100%;
+        padding: 5px 10px;
+    }
+    & input {
+        margin: 5px 0;
+    }
+    & button {
+        background-color: #70c0e8;
+        color: #5454c5;
+        text-transform: uppercase;
+        font-weight: 900;
+        border-radius: 5px;
+        border: none;
+        margin: 10px 0;
+    }
+}
+.chat__contacts__contact.active {
+    background-color: #b3e1d7;
+    &:hover {
+        background-color: #b3e1d7;
+    }
+}
+.chats {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    
+    height: 100vh;
+    background-color: $background-main;
+}
+.chat {
+    height: 100%;
+    padding: 1%;
+    background: #f0fbfe;
+    border-radius: $border-radius;
+    display: flex;
+    &__contacts {
+        background: #f0fbfe;
+        height: 100%;
+        &__self {
+            display: flex;
+            align-items: flex-start;
+            margin: 3px 0;
+        }
+        & img {
+            border-radius: 50%;
+        }
+        &_box {
+            overflow-y: scroll;
+        }
+        &__contact {
+            display: flex;
+            align-items: center;
+            padding: 0.5% 1%;
+            margin: 3px 0;
+            &:hover {
+                cursor: pointer;
+                background: #dafff7;
+            }
+            &_avatar,
+            &_name {
+                display: inline-block;
+                font-size: $font-size-text;
+            }
+            &_avatar {
+                border-radius: 50%;
+                margin-right: 5px;
+            }
+        }
+    }
+    &__messages {
+        background: #e5efec;
+        padding: 0 1%;
+        display: flex;
+        flex-direction: column;
+        border-radius: $border-radius;
+        height: 100%;
+        &_title {
+            display: inline-block;
+        }
+        &__history {
+            flex-grow: 1;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            &__message {
+                position: relative;
+                margin: 5px 0 5px 5px;
+                padding: 3px;
+                width: 85%;
+                align-self: flex-start;
+                background-color: #f0fbfe;
+                border-radius: $border-radius $border-radius $border-radius;
+                &::after {
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    border-top: 5px solid transparent;
+                    border-right: 5px solid #f0fbfe;
+                    position: absolute;
+                    bottom: 0;
+                    left: -5px;
+                }
+                &_text {
+                    overflow-wrap: break-word;
+                    font-size: $font-size-text;
+                }
+                &_sender,
+                &_date {
+                    font-size: $font-size-lower;
+                }
+                &_date {
+                    text-align: right;
+                }
+                &_self {
+                    background-color: $background-main;
+                    margin: 5px 5px 5px 0;
+                    align-self: flex-end;
+                    border-radius: $border-radius $border-radius 0 $border-radius;
+                    &::after {
+                        display: none;
+                    }
+                    &::before {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                        border-top: 5px solid transparent;
+                        border-left: 5px solid $background-main;
+                        position: absolute;
+                        bottom: 0;
+                        right: -5px;
+                    }
+                }
+            }
+        }
+        &__type-box {
+            display: flex;
+            padding: 5px;
+            &_input {
+                flex-grow: 1;
+                border: none;
+                padding: 3px 5px;
+                font-size: $font-size-text;
+                border-radius: $border-radius;
+            }
+            &_submit {
+                margin-left: 5px;
+                border: none;
+                background: none;
+                color: $background-main;
+                & i {
+                    font-size: 20px;
+                }
+                
+            }
+        }
+    }
+}
+
+@media (max-width: $tablet - 1) {
+    .change-window {
+        font-size: 20px;
+        color: $background-main;
+        margin-right: 10px;
+    }
+    .chats {
+        flex-direction: column;
+        padding: 1% 1%;
+    }
+    .chat {
+        height: 49.5%;
+        position: relative;
+        padding: 0;
+        &__messages,
+        &__contacts {
+            position: absolute;
+            width: 100%;
+        }
+        &__messages {
+            z-index: 1;
+        }
+        &__contacts {
+            z-index: 2;
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .change-window {
+        display: none;
+    }
+    .chats {
+        padding: 1% 5%;
+    }
+    .chat {
+        width: 49.5%;
+        &__messages {
+            width: 70%;
+        }
+        &__contacts {
+            width: 30%;
+        }
+    }
+}
