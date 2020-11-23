@@ -1,5 +1,5 @@
 Vue.component('user-comp', {
-    props: ['user',],
+    props: ['user'],
     data() {
         return {
             activeContact: Object,
@@ -41,7 +41,7 @@ Vue.component('user-comp', {
             <contacts-comp :avatar="user.avatar" :contacts="user.contacts" :userActive="user.name" :style="showContacts"></contacts-comp>
             <div class="chat__messages" :style="showMessages">
                 <h1 class="chat__messages_title" v-if="inChat"><i class="fas fa-arrow-left change-window" @click="clickInMessages"></i>  {{activeContact.name}}</h1>
-                <history-comp :history="activeContact.history" v-if="inChat"></history-comp>
+                <history-comp :history="activeContact.history" v-show="inChat"></history-comp>
                 <div class="chat__messages__type-box" v-if="inChat">
                     <input class="chat__messages__type-box_input" v-model="textMessage" @keyup.enter="sendMessage"></input>
                     <button class="chat__messages__type-box_submit" @click="sendMessage"><i class="fas fa-arrow-alt-circle-right"></i></button>
